@@ -14,11 +14,11 @@ fetch('https://people.canonical.com/~anthonydillon/wp-json/wp/v2/posts.json')
             //formatting date
             let date = item.date_gmt;
             date = new Date(date);
-            let format_options = { year: 'numeric', month: 'long', day: 'numeric' };
+            let format_options = {year: 'numeric', month: 'long', day: 'numeric'};
             date = new Intl.DateTimeFormat('en-GB', format_options).format(date);
 
             document.querySelector(".article-wrap").innerHTML
-                += `<div class=\"col-small-12 col-medium-6 col-4\">\n 
+                +=`<div class=\"col-small-12 col-medium-6 col-4 u-equal-height\">\n 
                             <div class=\"p-notification--negative article-box\">\n 
                                 <div class=\"p-card article-card\">\n 
                                     <p class=\"p-card__content card-category \">CLOUD AND SERVER</p>\n
@@ -27,9 +27,46 @@ fetch('https://people.canonical.com/~anthonydillon/wp-json/wp/v2/posts.json')
                                         <img class="" src="${img}" alt="article image"> 
                                      </div>\n 
                                     <h3 class=\"p-card__title\"><a href='#'>${title}</a></h3>\n
-                                    <h5 class="p-card__content">By <a href="#">${author}</a> on ${date}</h5>
+                                    <div class="card-bottom">
+                                        <p class="p-card__content card-author">By <a href="#">${author}</a> on ${date}</p>
+                                        <hr class=\"u-sv1\">\n
+                                        <p class=\"p-card__content\">Article</p>\n
+                                    </div>
+                                </div>\n
+                            </div>\n
+                        </div>`;
+        });
+
+        // Added just to see how multiple cards looks like
+        // ! TODELETE
+        data.reverse().forEach((item) => {
+
+            let img = item.featured_media;
+            let title = item.title.rendered;
+            let author = item._embedded.author[0].name;
+            let info = item.excerpt.rendered;
+
+            //formatting date
+            let date = item.date_gmt;
+            date = new Date(date);
+            let format_options = {year: 'numeric', month: 'long', day: 'numeric'};
+            date = new Intl.DateTimeFormat('en-GB', format_options).format(date);
+
+            document.querySelector(".article-wrap").innerHTML
+                +=`<div class=\"col-small-12 col-medium-6 col-4 u-equal-height\">\n 
+                            <div class=\"p-notification--negative article-box\">\n 
+                                <div class=\"p-card article-card\">\n 
+                                    <p class=\"p-card__content card-category \">CLOUD AND SERVER</p>\n
                                     <hr class=\"u-sv1\">\n
-                                    <p class=\"p-card__content\">Article</p>\n
+                                    <div class='u-align--center'> 
+                                        <img class="" src="${img}" alt="article image"> 
+                                     </div>\n 
+                                    <h3 class=\"p-card__title\"><a href='#'>${title}</a></h3>\n
+                                    <div class="card-bottom">
+                                        <p class="p-card__content card-author">By <a href="#">${author}</a> on ${date}</p>
+                                        <hr class=\"u-sv1\">\n
+                                        <p class=\"p-card__content\">Article</p>\n
+                                    </div>
                                 </div>\n
                             </div>\n
                         </div>`;

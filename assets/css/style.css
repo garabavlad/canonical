@@ -1,16 +1,18 @@
 
-
 .mt-4 {
     margin-top: 2rem;
 }
 
+.article-box {
+    /*margin: 0;*/
+    /*height: 100%;*/
+}
 
-
-.article-box::before{
+.article-box::before {
     background-color: #a77ca0;
 }
 
-.article-card{
+.article-card {
     margin: 0;
     width: 100%;
 }
@@ -19,8 +21,8 @@
     margin-bottom: 1rem;
 }
 
-.article-card h5 {
-    margin-bottom: 1rem !important;
+.article-card h3 {
+    margin-bottom: 6rem !important;
 }
 
 .article-card hr {
@@ -28,10 +30,19 @@
     border-top: 1px dotted #d9d9d9;
 }
 
-.card-category{
-    margin-bottom:1rem !important;
+.article-card p {
+    margin-bottom: 1rem !important;
 }
 
+.card-bottom {
+    position: absolute;
+    bottom: 0;
+    width:91%;
+}
+
+.card-author {
+
+}
 
 
 
